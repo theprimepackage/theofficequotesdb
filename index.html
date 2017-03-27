@@ -12,6 +12,7 @@
     <title>The Office Quote Database</title>
 
     <!-- Bootstrap Core CSS -->
+    <!--TODO: Change this to the CN--something-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -30,6 +31,8 @@
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+
+
 </head>
 
 <body>
@@ -45,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">OfficeQuotes</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -73,7 +76,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1>The Office Quotes Database!</h1>
-                <p class="lead">Complete with pre-defined file paths that you won't have to change!!</p>
+                <p class="lead">Season 1 Episode 1 is now searchable. (Please excuse the poor format, for now...)</p>
             </div>
         </div>
 
@@ -90,7 +93,13 @@
     </div>
 
         <p id="par_text"> This text will change. </p>
-        <p id="otro">Another piece of text</p>
+        <p id="line">Another piece of text</p>
+    </div>
+    <div class="row">
+        <div class="col-lg-10">
+            <div id="search_content"></div>
+        </div>
+
     </div>
     <!-- /.container -->
 
@@ -99,47 +108,15 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            var httpRequest;
-            document.getElementById("button").onclick = function() {
-                var searchText = document.getElementById('search_text');
-                var searchEncoded = encodeURIComponent(searchText);
-                makeRequest('http://35.185.217.146:9200/firebase/line/_search?q=text_entry_orig:dipaes~');
-            };
-
-            function makeRequest(url) {
-                httpRequest = new XMLHttpRequest();
-
-                if (!httpRequest) {
-                    alert('Giving up :( Cannot create an XMLHTTP instance');
-                    return false;
-                }
-
-                httpRequest.onreadystatechange = alertContents;
-                httpRequest.open('GET', url);
-                httpRequest.send();
-            }
-
-            function alertContents() {
-                if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    alert(httpRequest.status);
-                    if (httpRequest.status === 200) {
-                        $("#par_text").text(httpRequest.responseText);
-                    } else {
-
-                        $("#par_text").text('There was a problem with the request.');
-                    }
-                }
-            }
-        })();
-    </script>
+    <script src="js/elasticSearchRequest.js"></script>
     <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-                $("#par_text").text($("#search_text").val());
+        document.getElementById("search_text")
+            .addEventListener("keyup", function(event) {
+                event.preventDefault();
+                if (event.keyCode == 13) {
+                    document.getElementById("button").click();
+                }
             });
-        });
     </script>
 </body>
 
