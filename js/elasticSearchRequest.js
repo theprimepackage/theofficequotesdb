@@ -50,7 +50,7 @@ function displaySearchResults(arr) {
     out +=  '<li class="mdl-list__item mdl-list__item--three-line">' +
             '<span class="mdl-list__item-primary-content"><i class="material-icons mdl-list__item-avatar">person</i>' +
             '<span>' + arr[i]._source.speaker + '</span>' +
-            '<span class="mdl-list__item-text-body">' + arr[i]._source.speaker + '</span></span></li>';
+            '<span class="mdl-list__item-text-body">' + arr[i]._source.text_entry_orig + '</span></span></li>';
 
         // out += '<p>' + arr[i]._source.speaker + ' : ' +
         //     arr[i]._source.text_entry_orig + '<\p>';
