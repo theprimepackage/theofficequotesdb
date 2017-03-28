@@ -47,8 +47,13 @@ function displaySearchResults(arr) {
     var out = "";
     var i;
     for(i = 0; i < arr.length; i++) {
-        out += '<p>' + arr[i]._source.speaker + ' : ' +
-            arr[i]._source.text_entry_orig + '<\p>';
+    out +=  '<li class="mdl-list__item mdl-list__item--three-line">' +
+            '<span class="mdl-list__item-primary-content"><i class="material-icons mdl-list__item-avatar">person</i>' +
+            '<span>' + arr[i]._source.speaker + '</span>' +
+            '<span class="mdl-list__item-text-body">' + arr[i]._source.speaker + '</span></span></li>';
+
+        // out += '<p>' + arr[i]._source.speaker + ' : ' +
+        //     arr[i]._source.text_entry_orig + '<\p>';
     }
-    document.getElementById("search_content").innerHTML = out;
+    document.getElementById("quotes_list").innerHTML = out;
 }
